@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>צוות גורדון</title>
+<meta name="description" content="פורטל המידע לצוות בית חינוך א.ד. גורדון: דיווחים, לוחות, טפסים וקישורים במקום אחד.">
+<meta name="theme-color" content="#0c4a6e">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="צוות גורדון">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<style>
+/* Layout: sky-blue gradient hero with centered search, then grouped grids of white cards with colored icon tiles */
+:root{
+  --bg:#f8fafc;
+  --surface:#ffffff;
+  --ink:#0f172a;
+  --text:#334155;
+  --muted:#64748b;
+  --line:#e2e8f0;
+  --brand-500:#0ea5e9;
+  --brand-700:#0369a1;
+  --brand-900:#0c4a6e;
+  --brand-100:#e0f2fe;
+  --note-bg:#fffbeb;
+  --note-ink:#b45309;
+  --shadow:0 1px 2px rgba(15,23,42,.06);
+  --shadow-hover:0 18px 34px -12px rgba(15,23,42,.22);
+  --font:"Heebo","Arial Hebrew","Segoe UI",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1220;--surface:#131c2e;--ink:#f1f5f9;--text:#cbd5e1;--muted:#94a3b8;--line:#1f2a3f;
+    --brand-100:#bae6fd;--note-bg:#3a2a0e;--note-ink:#fcd34d;
+    --shadow:0 1px 2px rgba(0,0,0,.4);--shadow-hover:0 18px 34px -12px rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b1220;--surface:#131c2e;--ink:#f1f5f9;--text:#cbd5e1;--muted:#94a3b8;--line:#1f2a3f;
+  --brand-100:#bae6fd;--note-bg:#3a2a0e;--note-ink:#fcd34d;
+  --shadow:0 1px 2px rgba(0,0,0,.4);--shadow-hover:0 18px 34px -12px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{direction:rtl;text-align:right;background:var(--bg);color:var(--text);font-family:var(--font);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Hero */
+header{position:relative;overflow:hidden;color:#fff;background:linear-gradient(to left,var(--brand-700),var(--brand-900));box-shadow:0 10px 25px -10px rgba(12,74,110,.5)}
+header::before,header::after{content:"";position:absolute;border-radius:50%;filter:blur(40px);pointer-events:none}
+header::before{width:260px;height:260px;top:-80px;right:-80px;background:rgba(255,255,255,.08)}
+header::after{width:340px;height:340px;bottom:-110px;left:-90px;background:rgba(14,165,233,.22)}
+header .wrap{position:relative;z-index:1;padding-block:56px 48px;text-align:center;display:grid;justify-items:center;gap:14px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;font-weight:500;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,.12);color:#e0f2fe}
+h1{margin:0;font-size:clamp(2.1rem,5.5vw,3.2rem);font-weight:800;letter-spacing:-.01em;line-height:1.15;text-wrap:balance}
+h1 span{color:#bae6fd}
+.lede{margin:0;max-width:40rem;font-size:clamp(1rem,2.2vw,1.2rem);font-weight:300;color:#e0f2fe}
+.search{position:relative;width:100%;max-width:460px;margin-top:14px}
+.search input{width:100%;font:inherit;font-size:1rem;padding:13px 48px 13px 18px;border:0;border-radius:999px;background:#fff;color:#0f172a;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.search input::placeholder{color:#94a3b8}
+.search input:focus{outline:3px solid var(--brand-500);outline-offset:2px}
+.search .si{position:absolute;right:18px;top:50%;transform:translateY(-50%);color:#94a3b8;pointer-events:none}
+
+nav.jump{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:6px}
+nav.jump a{color:#fff;text-decoration:none;font-size:.88rem;font-weight:500;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);transition:background .2s}
+nav.jump a:hover,nav.jump a:focus-visible{background:rgba(255,255,255,.22);outline:none}
+
+/* Sections */
+main .wrap{padding-block:44px 64px;display:grid;gap:44px}
+section{display:grid;gap:18px;scroll-margin-top:16px}
+.sec-head{display:flex;align-items:center;gap:10px}
+.sec-head h2{margin:0;font-size:1.3rem;font-weight:700;color:var(--ink)}
+.sec-head .count{font-size:.8rem;font-weight:500;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:1px 10px}
+.sec-head::after{content:"";flex:1;height:1px;background:var(--line)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px}
+
+/* Cards */
+.card{--c:#0284c7;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow);color:inherit;text-decoration:none;transition:box-shadow .3s,transform .3s,border-color .3s;animation:rise .45s ease-out both}
+.card:hover{box-shadow:var(--shadow-hover);transform:translateY(-4px);border-color:color-mix(in srgb,var(--c) 30%,var(--line))}
+.card:focus-visible{outline:3px solid var(--brand-500);outline-offset:3px}
+.ico{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;font-size:1.45rem;margin-bottom:16px;color:var(--c);background:color-mix(in srgb,var(--c) 12%,transparent);transition:background .3s,color .3s}
+.card:hover .ico{background:var(--c);color:#fff}
+.card h3{margin:0 0 6px;font-size:1.08rem;font-weight:700;color:var(--ink);line-height:1.35}
+.card p.desc{margin:0;flex-grow:1;font-size:.9rem;color:var(--muted);line-height:1.65}
+.note{display:flex;gap:8px;align-items:flex-start;margin-top:12px;padding:8px 12px;border-radius:10px;background:var(--note-bg);color:var(--note-ink);font-size:.8rem;font-weight:500;line-height:1.5}
+.note svg{margin-top:3px;flex:none}
+.meta{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted)}
+.meta .go{color:var(--c);font-weight:700;display:inline-flex;align-items:center;gap:6px}
+.card:hover .meta .go svg{transform:translateX(-3px)}
+.meta .go svg{transition:transform .25s}
+
+.c-blue{--c:#2563eb}.c-red{--c:#dc2626}.c-emerald{--c:#059669}.c-purple{--c:#9333ea}
+.c-indigo{--c:#4f46e5}.c-pink{--c:#db2777}.c-cyan{--c:#0891b2}.c-amber{--c:#d97706}
+.c-yellow{--c:#ca8a04}.c-teal{--c:#0d9488}.c-fuchsia{--c:#c026d3}.c-slate{--c:#475569}.c-sky{--c:#0284c7}.c-orange{--c:#ea580c}.c-violet{--c:#7c3aed}
+.card.wide{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;column-gap:20px;align-items:center}
+.card.wide .ico{margin-bottom:0;width:64px;height:64px;font-size:1.7rem}
+.card.wide .wide-body{min-width:0}
+.card.wide .meta{grid-column:1/-1}
+@media (max-width:520px){.card.wide{grid-template-columns:1fr}.card.wide .ico{margin-bottom:16px}}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .c-slate{--c:#94a3b8}}
+:root[data-theme="dark"] .c-slate{--c:#94a3b8}
+
+.urgent{border-color:color-mix(in srgb,var(--c) 35%,var(--line))}
+
+.empty{text-align:center;padding-block:40px;color:var(--muted)}
+.empty .big{font-size:3.2rem;color:var(--line);margin-bottom:8px}
+.empty h3{margin:0;color:var(--ink);font-size:1.2rem}
+
+footer{background:var(--surface);border-top:1px solid var(--line);text-align:center;font-size:.88rem;color:var(--muted)}
+footer .wrap{padding-block:26px}
+footer strong{display:block;color:var(--ink);font-weight:500;margin-bottom:2px}
+
+@keyframes rise{from{transform:translateY(14px)}to{transform:none}}
+@media (prefers-reduced-motion: reduce){.card,.ico,.meta .go svg{animation:none;transition:none}.card:hover{transform:none}}
+
+/* ===== App mode ===== */
+html,body{margin:0}
+html{-webkit-tap-highlight-color:transparent}
+body{min-height:100vh;display:flex;flex-direction:column}
+main{flex:1}
+header .wrap{padding-top:calc(56px + env(safe-area-inset-top,0px))}
+@media (display-mode: standalone){ header .wrap{padding-block:calc(28px + env(safe-area-inset-top,0px)) 28px} .lede{display:none} }
+@media (max-width:600px){
+  header .wrap{padding-block:calc(26px + env(safe-area-inset-top,0px)) 24px;gap:10px}
+  h1{font-size:1.75rem} .lede{font-size:.95rem}
+  nav.jump{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;width:calc(100% + 32px);margin-inline:-16px;padding-inline:16px;scrollbar-width:none}
+  nav.jump::-webkit-scrollbar{display:none}
+  nav.jump a{flex:none}
+  main .wrap{padding-block:24px 40px;gap:28px}
+  .grid{grid-template-columns:1fr;gap:12px}
+  .card{display:grid;grid-template-columns:48px 1fr;column-gap:14px;padding:16px;border-radius:16px;align-items:start}
+  .card .ico,.card.wide .ico{width:48px;height:48px;font-size:1.2rem;margin:0;grid-row:span 2;border-radius:12px}
+  .card h3{margin:2px 0 4px;font-size:1rem}
+  .card p.desc{font-size:.85rem;line-height:1.55}
+  .card .note,.card .meta{grid-column:2}
+  .card.wide{grid-template-columns:48px 1fr}
+  .card.wide .wide-body{grid-column:2}
+  .meta{margin-top:10px;padding-top:10px}
+  .card:hover{transform:none}
+  .card:active{transform:scale(.98)}
+}
+footer .wrap{padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
+
+/* install banner */
+.install{position:fixed;inset:auto 0 0 0;z-index:20;padding:14px max(16px,env(safe-area-inset-left,0px)) calc(14px + env(safe-area-inset-bottom,0px));background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -10px 30px -12px rgba(15,23,42,.3);display:flex;gap:12px;align-items:center}
+.install img{width:44px;height:44px;border-radius:10px;flex:none}
+.install .txt{flex:1;min-width:0;font-size:.88rem;color:var(--text);line-height:1.45}
+.install .txt b{display:block;color:var(--ink);font-size:.95rem}
+.install button{font:inherit;font-weight:700;border:0;border-radius:999px;padding:9px 16px;cursor:pointer}
+.install .ok{background:var(--brand-700);color:#fff}
+.install .x{background:transparent;color:var(--muted);padding:9px 8px;font-size:1.1rem}
+.ios-share{display:inline-block;vertical-align:-3px;width:16px;height:16px}
+.offline{position:fixed;top:calc(8px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:30;background:#1e293b;color:#fff;font-size:.82rem;padding:6px 14px;border-radius:999px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="eyebrow"><i class="fa-solid fa-school"></i> בית חינוך ע"ש א.ד. גורדון · תשפ"ז</span>
+    <h1>פורטל מידע לצוות <span>גורדון</span></h1>
+    <p class="lede">כל הכלים, הקישורים והמידע לשגרת יום הלימודים, במקום אחד.</p>
+    <div class="search">
+      <i class="fa-solid fa-magnifying-glass si"></i>
+      <input id="q" type="search" placeholder="חיפוש מהיר (למשל: תורנויות, חדר אוכל)…" autocomplete="off" aria-label="חיפוש מהיר">
+    </div>
+    <nav class="jump" aria-label="מעבר לקטגוריה">
+      <a href="#reports">דיווחים</a>
+      <a href="#knowledge">מרכז הידע</a>
+      <a href="#parents">הורים וחינוך חברתי</a>
+      <a href="#boards">לוחות וזמנים</a>
+      <a href="#staff">טפסים לצוות</a>
+      <a href="#dining">חדר אוכל</a>
+      <a href="#computers">מחשבים</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <section id="reports">
+    <div class="sec-head"><h2>דיווחים</h2></div>
+    <div class="grid">
+      <a class="card c-red urgent" href="https://survey.gov.il/he/harigim_tashpaz" target="_blank" rel="noopener" data-k="אירוע חריג פיקוח דיווח תשפז">
+        <div class="ico"><i class="fa-solid fa-building-shield"></i></div>
+        <h3>דיווח אירוע חריג לפיקוח</h3>
+        <p class="desc">טופס הדיווח על אירוע חריג לשנת תשפ"ז. ממלאים מיד אחרי האירוע, עם כל הפרטים, והדיווח מגיע לפיקוח.</p>
+        <div class="meta"><span>טופס gov.il</span><span class="go">לדיווח <i class="fa-solid fa-arrow-left"></i></span></div>
+      </a>
+    </div>
+  </section>
+
+  <section id="knowledge">
+    <div class="sec-head"><h2>מרכז הידע</h2></div>
+    <div class="grid">
+      <a class="card c-orange wide" href="https://drive.google.com/drive/folders/1QaRiCbGnUs7CWqVfERGCZXvo1Cpv7J-I" target="_blank" rel="noopener" data-k="מרכז הידע גורדון תיקייה מסמכים נהלים חומרים דרייב">
+        <div class="ico"><i class="fa-solid fa-book-open"></i></div>
+        <div class="wide-body">
+          <h3>מרכז הידע של גורדון</h3>
+          <p class="desc">התיקייה המרכזית של בית החינוך ב־Drive: נהלים, מסמכים, תוכניות וחומרים משותפים לכל הצוות. כשמחפשים מסמך ולא יודעים איפה הוא, מתחילים כאן.</p>
+        </div>
+        <div class="meta"><span>Google Drive · תיקייה</span><span class="go">למרכז הידע <i class="fa-solid fa-arrow-left"></i></span></div>
+      </a>
+    </div>
+  </section>
+
+  <section id="parents">
+    <div class="sec-head"><h2>הורים וחינוך חברתי</h2></div>
+    <div class="grid">
+      <a class="card c-blue" href="https://calendar.app.google/UyJaYCzJ4Mq28G6u9" target="_blank" rel="noopener" data-k="פגישות הורים מחנך יועצת יומן קביעת">
+        <div class="ico"><i class="fa-solid fa-calendar-check"></i></div>
+        <h3>פגישות הורים–מחנך.ת–יועצת</h3>
+        <p class="desc">יומן לקביעת פגישות משותפות של הורים, מחנך.ת הכיתה והיועצת. בוחרים מועד פנוי והפגישה נקבעת.</p>
+        <div class="meta"><span>Google Calendar</span><span class="go">לקביעת פגישה <i class="fa-solid fa-arrow-left"></i></span></div>
+      </a>
+      <a class="card c-purple" href="https://pagea.uk/elias" target="_blank" rel="noopener" data-k="פורטל חינוך חברתי מערכי שיעור">
+        <div class="ico"><i class="fa-solid fa-users"></i></div>
+        <h3>פורטל חינוך חברתי</h3>
+        <p class="desc">חומרים ומערכי שיעור לשיעורי חינוך ולתוכנית החברתית לאורך השנה.</p>
+        <div class="note"><i class="fa-solid fa-circle-info"></i><span>יש לפתוח בחלון גלישה בסתר ולשים לב לבחירת התקופה בראש העמוד.</span></div>
+        <div class="meta"><span>פורטל</span><span class="go">לפורטל <i class="fa-solid fa-arrow-left"></i></span></div>
+      </a>
+    </div>
+  </section>
+
+  <section id="boards">
+    <div class="sec-head"><h2>לוחות וזמנים</h2></div>
+    <div class="grid">
+      <a class="card c-violet" href="https://calendar.google.com/calendar/embed?src=242405a2038ea400d8d834222f2022533374db341b885e27044b33dc24d6c316%40group.calendar.google.com&ctz=Asia%2FJerusalem&hl=iw&mode=MONTH" target="_blank" rel="noopener" data-k="לוז שנתי יומן גוגל לוח שנה תשפז calendar">
+        <div class="ico"><i class="fa-brands fa-google"></i></div>
+        <h3>לו"ז שנתי ביומן Google</h3>
+        <p class="desc">צפייה באירועי השנה של בית החינוך בתצוגת חודש. מי שרוצה יכול להוסיף את היומן ליומן האישי דרך הכפתור «+ Google Calendar» בתחתית היומן.</p>
+        <div class="meta"><span>Google Calendar</span><span class="go">לצפייה ביומן <i class="fa-solid fa-arrow-left"></i></span></div>
+      </a>
+      <a class="card c-indigo" href="https://docs.google.com/spreadsheets/d/1dSIvlYf9poK7SJtUUv0qErSxYKoReQuo/edit?usp=drivesdk&ouid=114480620971639265483&rtpof=true&sd=true" target="_blank" rel="noopener" data-k="חוזר אירועים שנתי לוח שנה טקסים">
+        <div class="ico"><i class="fa-regular fa-calendar-days"></i></div>
+        <h3>חוזר אירועים שנתי</h3>
+        <p class="desc">כל הפעילויות, הטקסים, הטיולים, אסיפות ההורים והחופשות של שנת הלימודים.</p>
+        <div class="meta"><span>Google Sheets</span><span class="go">לחוזר <i class="fa-solid fa-arrow-left"></i></span></div>
+      </a>
+      <a class="card c-emerald" href="https://docs.google.com/spreadsheets/d/1nSX51Fcz_fRJHfioBOMWF7WGZGgtXcsqoobJMXZlzmo/edit?usp=drivesdk" target="_blank" rel="noopener" data-k="לוח אירועים והערכות חטיבת ביניים חטב מבחנים בחנים עבודות נהלי בחינות">
+        <div class="ico"><i class="fa-solid fa-table-list"></i></div>
+        <h3>לוח אירועים והערכות – חטיבת הביניים</h3>
+        <p class="desc">לוח יומי של אירועי חט"ב והמבחנים, הבחנים והעבודות בכל כיתה (ז'–ט'), צבוע לפי סוג. בלשונית השנייה נמצאים נהלי הבחינות. בודקים כאן לפני שקובעים הערכה חדשה.</p>
+        <div class="meta"><span>Google Sheets</span><span class="go">ללוח <i class="fa-solid fa-arrow-left"></i></span></div>
+      </a>
+      <a class="card c-pink" href="https://asifbenish-tech.github.io/gordon-timetable/" target="_blank" rel="noopener" data-k="מערכת שעות אישית">
+        <div class="ico"><i class="fa-regular fa-clock"></i></div>
+        <h3>מערכת שעות אישית</h3>
+        <p class="desc">צפייה במערכת השעות האישית והמעודכנת שלכם: שיעורים, כיתות וחדרים.</p>
+        <div class="meta"><span>אתר</span><span class="go">למערכת <i class="fa-solid fa-arrow-left"></i></span></div>
+      </a>
+      <a class="card c-yellow" href="https://drive.google.com/file/d/1T8sctvDPOfuWdxkdLw-u8EPMrFh1euTQ/view?usp=drivesdk" target="_blank" rel="noopener" data-k="לוח צלצולים שעות הפסקות">
+        <div class="ico"><i class="fa-regular fa-bell"></i></div>
+        <h3>לוח צלצולים</h3>
+        <p class="desc">זמני השיעורים וההפסקות לאורך יום הלימודים.</p>
+        <div class="meta"><span>Google Drive</span><span class="go">ללוח <i class="fa-solid fa-arrow-left"></i></span></div>
+      </a>
+      <a class="card c-fuchsia" href="https://docs.google.com/spreadsheets/d/17SAA7wVNPVFJaE-DOJGwjalGsNyV2arj/edit?usp=sharing&ouid=115170418854102115448&rtpof=true&sd=true" target="_blank" rel="noopener" data-k="לוח תורנויות תורנות הפסקה חצר">
+        <div class="ico"><i class="fa-solid fa-eye"></i></div>
+        <h3>לוח תורנויות</h3>
+        <p class="desc">שיבוץ תורנויות הצוות בחצר ובמסדרונות במהלך ההפסקות.</p>
+        <div class="meta"><span>Google Sheets</span><span class="go">ללוח <i class="fa-solid fa-arrow-left"></i></span></div>
+      </a>
+    </div>
+  </section>
+
+  <section id="staff">
+    <div class="sec-head"><h2>טפסים לצוות</h2></div>
+    <div class="grid">
+      <a class="card c-teal" href="https://docs.google.com/forms/d/e/1FAIpQLSfmLLkOl45NNHenPSKqi9Ql0JdXLp4tI3aglmXObOyrFvStPQ/viewform?usp=sharing&ouid=109898664273540577805" target="_blank" rel="noopener" data-k="בקשות אישורי היעדרות מורים חופש">
+        <div class="ico"><i class="fa-solid fa-file-signature"></i></div>
+        <h3>בקשות ואישורי היעדרות מורים</h3>
+        <p class="desc">טופס להגשת בקשת היעדרות מראש. הבקשה מגיעה להנהלה לאישור ולתיאום מילוי מקום.</p>
+        <div class="meta"><span>Google Forms</span><span class="go">לטופס <i class="fa-solid fa-arrow-left"></i></span></div>
+      </a>
+    </div>
+  </section>
+
+  <section id="dining">
+    <div class="sec-head"><h2>חדר אוכל</h2></div>
+    <div class="grid">
+      <a class="card c-cyan" href="https://docs.google.com/document/d/1t-WxfLMC2zrIH0E0uZCxVgH3aimEAvFL/edit?usp=drivesdk&ouid=114480620971639265483&rtpof=true&sd=true" target="_blank" rel="noopener" data-k="סידור הושבה חדר אוכל שולחנות">
+        <div class="ico"><i class="fa-solid fa-chair"></i></div>
+        <h3>סידור הושבה בחדר האוכל</h3>
+        <p class="desc">מפת חדר האוכל וסידור הישיבה המעודכן של הכיתות.</p>
+        <div class="meta"><span>Google Docs</span><span class="go">לסידור <i class="fa-solid fa-arrow-left"></i></span></div>
+      </a>
+      <a class="card c-amber" href="https://docs.google.com/document/d/1seO9xbZWX0KpTZmA32J_3gVmg5KrTppt/edit?usp=drivesdk&ouid=114480620971639265483&rtpof=true&sd=true" target="_blank" rel="noopener" data-k="משמרות חדר אוכל השגחה">
+        <div class="ico"><i class="fa-solid fa-utensils"></i></div>
+        <h3>משמרות חדר אוכל</h3>
+        <p class="desc">שיבוץ אנשי הצוות למשמרות השגחה בחדר האוכל.</p>
+        <div class="meta"><span>Google Docs</span><span class="go">למשמרות <i class="fa-solid fa-arrow-left"></i></span></div>
+      </a>
+    </div>
+  </section>
+
+  <section id="computers">
+    <div class="sec-head"><h2>מחשבים</h2></div>
+    <div class="grid">
+      <a class="card c-slate" href="https://docs.google.com/document/d/1EKy9dyzeBcHi5pN8ZrCr6FZKU0L3iW-u/edit?usp=drive_link&ouid=106974027024048854295&rtpof=true&sd=true" target="_blank" rel="noopener" data-k="חדר מחשבים הזמנה שריון נהלים">
+        <div class="ico"><i class="fa-solid fa-desktop"></i></div>
+        <h3>חדר מחשבים</h3>
+        <p class="desc">יומן הזמנות ונהלי שימוש בחדר המחשבים של בית הספר.</p>
+        <div class="meta"><span>Google Docs</span><span class="go">ליומן <i class="fa-solid fa-arrow-left"></i></span></div>
+      </a>
+      <a class="card c-sky" href="https://docs.google.com/document/d/1EBGnEVJOhTpHA3p2qAmxSijC-SFMFvYc/edit?usp=drive_link&ouid=106974027024048854295&rtpof=true&sd=true" target="_blank" rel="noopener" data-k="מחשבים ניידים עגלה לפטופים השאלה">
+        <div class="ico"><i class="fa-solid fa-laptop"></i></div>
+        <h3>מחשבים ניידים</h3>
+        <p class="desc">רישום, השאלה ונהלי שימוש בעגלות המחשבים הניידים.</p>
+        <div class="meta"><span>Google Docs</span><span class="go">ליומן <i class="fa-solid fa-arrow-left"></i></span></div>
+      </a>
+    </div>
+  </section>
+
+  <div class="empty" id="empty" hidden>
+    <div class="big"><i class="fa-solid fa-folder-open"></i></div>
+    <h3>לא נמצאו תוצאות</h3>
+    <p>נסו לחפש מילה אחרת</p>
+  </div>
+
+</div>
+</main>
+
+<footer><div class="wrap"><strong>נוצר עבור צוות בית חינוך א.ד. גורדון</strong>שתהיה שנת לימודים פורייה ומוצלחת!</div></footer>
+
+<script>
+(function(){
+  var q=document.getElementById('q'),empty=document.getElementById('empty');
+  var sections=[].slice.call(document.querySelectorAll('main section'));
+  var norm=function(s){return s.replace(/["׳״'\-–]/g,'').toLowerCase();};
+  sections.forEach(function(s,si){
+    s.querySelectorAll('.card').forEach(function(c,i){c.style.animationDelay=(si*0.06+i*0.05)+'s';});
+  });
+  q.addEventListener('input',function(){
+    var t=norm(q.value.trim()),any=false;
+    sections.forEach(function(s){
+      var shown=0;
+      s.querySelectorAll('.card').forEach(function(c){
+        var ok=!t||norm(c.dataset.k+' '+c.textContent).indexOf(t)>-1;
+        c.hidden=!ok;if(ok)shown++;
+      });
+      s.hidden=!shown;if(shown)any=true;
+    });
+    empty.hidden=any;
+  });
+})();
+</script>
+
+<div class="install" id="install" hidden role="dialog" aria-label="התקנת האפליקציה">
+  <img src="icon-192.png" alt="">
+  <div class="txt" id="installTxt"><b>התקינו את "צוות גורדון"</b>כל הקישורים של הצוות, ישר ממסך הבית.</div>
+  <button class="ok" id="installBtn" type="button">התקנה</button>
+  <button class="x" id="installClose" type="button" aria-label="סגירה">✕</button>
+</div>
+<div class="offline" id="offline" hidden>אין חיבור לאינטרנט</div>
+<script>
+(function(){
+  if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}
+  var bar=document.getElementById('install'),btn=document.getElementById('installBtn'),txt=document.getElementById('installTxt'),off=document.getElementById('offline');
+  var standalone=window.matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+  var dismissed=false;try{dismissed=localStorage.getItem('gordonInstallDismissed')==='1';}catch(e){}
+  var deferred=null;
+  function close(){bar.hidden=true;try{localStorage.setItem('gordonInstallDismissed','1');}catch(e){}}
+  document.getElementById('installClose').addEventListener('click',close);
+  window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferred=e;if(!standalone&&!dismissed)bar.hidden=false;});
+  btn.addEventListener('click',function(){
+    if(deferred){deferred.prompt();deferred.userChoice.finally(function(){deferred=null;bar.hidden=true;});}
+    else close();
+  });
+  var ua=navigator.userAgent,isIOS=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  if(isIOS&&!standalone&&!dismissed){
+    txt.innerHTML='<b>התקינו את "צוות גורדון"</b>ב־Safari: לחצו על <svg class="ios-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg> שיתוף ואז «הוספה למסך הבית».';
+    btn.textContent='הבנתי';bar.hidden=false;
+  }
+  function net(){off.hidden=navigator.onLine;}
+  window.addEventListener('online',net);window.addEventListener('offline',net);net();
+})();
+</script>
+</body>
+</html>
