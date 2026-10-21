@@ -1,6 +1,6 @@
 // גרסה: לשנות את המספר בכל עדכון של index.html כדי שהמורים יקבלו את הגרסה החדשה
-const CACHE = 'gordon-staff-v2';
-const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png', './favicon.png'];
+const CACHE = 'gordon-staff-v3';
+const CORE = ['./', './index.html', './activities.json', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png', './favicon.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
@@ -13,9 +13,9 @@ self.addEventListener('fetch', e => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   // העמוד עצמו: קודם מהרשת (כדי לקבל עדכונים), ואם אין אינטרנט – מהמטמון
-  if (req.mode === 'navigate' || (url.origin === location.origin && url.pathname.endsWith('.html'))) {
-    e.respondWith(fetch(req).then(r => { const copy = r.clone(); caches.open(CACHE).then(c => c.put('./index.html', copy)); return r; })
-      .catch(() => caches.match('./index.html')));
+  if (req.mode === 'navigate' || (url.origin === location.origin && /\.(html|json)$/.test(url.pathname))) {
+    e.respondWith(fetch(req).then(r => { const copy = r.clone(); caches.open(CACHE).then(c => c.put(req.mode === 'navigate' ? './index.html' : req, copy)); return r; })
+      .catch(() => caches.match(req.mode === 'navigate' ? './index.html' : req, {ignoreSearch: true})));
     return;
   }
   // גופנים, אייקונים וקבצים קבועים: מהמטמון, ובמקביל מתעדכנים ברקע

@@ -152,6 +152,63 @@ header .wrap{padding-top:calc(56px + env(safe-area-inset-top,0px))}
 }
 footer .wrap{padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
 
+
+/* ===== Activity bank ===== */
+.c-rose{--c:#e11d48}
+.aview{position:fixed;inset:0;z-index:15;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.abar{position:sticky;top:0;z-index:2;color:#fff;background:linear-gradient(to left,var(--brand-700),var(--brand-900));box-shadow:0 6px 18px -8px rgba(12,74,110,.6)}
+.abar-in{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:calc(12px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 12px max(16px,env(safe-area-inset-left,0px))}
+.aback{flex:none;width:40px;height:40px;border-radius:12px;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:1rem;cursor:pointer;display:grid;place-items:center}
+.aback:focus-visible{outline:3px solid #bae6fd}
+.atitle{min-width:0;display:grid;line-height:1.25}
+.atitle small{font-size:.75rem;color:#bae6fd}
+.atitle strong{font-size:1.1rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.abody{max-width:900px;padding-block:20px calc(40px + env(safe-area-inset-bottom,0px));display:grid;gap:18px}
+.alead{margin:0;color:var(--muted);font-size:.92rem}
+.month{font-size:.8rem;font-weight:700;letter-spacing:.04em;color:var(--muted);margin:10px 0 -8px}
+.flist{display:grid;gap:8px}
+.folder{display:flex;align-items:center;gap:14px;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;color:inherit;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.folder:hover{border-color:color-mix(in srgb,#e11d48 35%,var(--line));box-shadow:var(--shadow-hover)}
+.folder:focus-visible{outline:3px solid var(--brand-500);outline-offset:2px}
+.fico{position:relative;flex:none;width:46px;height:40px;display:grid;place-items:center;font-size:2.4rem;color:#f59e0b}
+.fico svg{display:block}
+.fico .sym{position:absolute;inset:12px 0 0;display:grid;place-items:center;font-size:.85rem;color:#7c2d12}
+.folder.empty-f .fico{color:color-mix(in srgb,var(--muted) 45%,transparent)}
+.folder.empty-f .fico .sym{color:var(--surface)}
+.fbody{flex:1;min-width:0}
+.fbody b{display:block;color:var(--ink);font-size:.98rem;font-weight:700;line-height:1.35}
+.fbody span{font-size:.8rem;color:var(--muted)}
+.fside{flex:none;display:grid;justify-items:end;gap:4px}
+.count{font-size:.75rem;font-weight:700;padding:2px 10px;border-radius:999px;background:color-mix(in srgb,#e11d48 12%,transparent);color:#e11d48}
+.count.zero{background:var(--bg);color:var(--muted);border:1px solid var(--line);font-weight:500}
+.chip-next{font-size:.7rem;font-weight:700;color:#fff;background:#059669;padding:1px 8px;border-radius:999px}
+.folder.past{opacity:.62}
+.folder.next{border-color:#059669;box-shadow:0 0 0 1px #059669 inset}
+.ehead{display:flex;gap:14px;align-items:center;padding:18px;background:var(--surface);border:1px solid var(--line);border-radius:16px}
+.ehead .big{flex:none;width:56px;height:56px;border-radius:14px;display:grid;place-items:center;font-size:1.5rem;color:#e11d48;background:color-mix(in srgb,#e11d48 12%,transparent)}
+.ehead h2{margin:0;font-size:1.25rem;color:var(--ink);line-height:1.3}
+.ehead p{margin:2px 0 0;font-size:.85rem;color:var(--muted)}
+.act{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;gap:12px}
+.act-top{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+.act h3{margin:0;font-size:1.12rem;color:var(--ink)}
+.act .sub{margin:2px 0 0;font-size:.85rem;color:var(--muted)}
+.grades{flex:none;font-size:.78rem;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--brand-100);color:var(--brand-900)}
+.act .d{margin:0;font-size:.92rem;color:var(--text)}
+.parts{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.parts li{display:flex;gap:10px;align-items:baseline;font-size:.88rem;color:var(--text)}
+.parts li b{flex:none;min-width:58px;font-size:.78rem;font-weight:700;color:var(--brand-700);background:color-mix(in srgb,var(--brand-500) 10%,transparent);padding:1px 8px;border-radius:8px;text-align:center}
+.files{display:flex;flex-wrap:wrap;gap:8px}
+.fbtn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:12px;font-weight:700;font-size:.9rem;text-decoration:none;border:1px solid var(--line)}
+.fbtn.pdf{background:#dc2626;color:#fff;border-color:#dc2626}
+.fbtn.word{background:var(--surface);color:#2563eb;border-color:color-mix(in srgb,#2563eb 40%,var(--line))}
+.fbtn:focus-visible{outline:3px solid var(--brand-500);outline-offset:2px}
+.aempty{text-align:center;padding:36px 18px;background:var(--surface);border:1px dashed var(--line);border-radius:16px;color:var(--muted)}
+.aempty .big2{font-size:2.6rem;color:var(--line);margin-bottom:8px}
+.aempty b{display:block;color:var(--ink);margin-bottom:4px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .grades{background:#0c4a6e;color:#e0f2fe}:root:not([data-theme="light"]) .parts li b{color:#7dd3fc}}
+:root[data-theme="dark"] .grades{background:#0c4a6e;color:#e0f2fe}
+:root[data-theme="dark"] .parts li b{color:#7dd3fc}
+
 /* install banner */
 .install{position:fixed;inset:auto 0 0 0;z-index:20;padding:14px max(16px,env(safe-area-inset-left,0px)) calc(14px + env(safe-area-inset-bottom,0px));background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -10px 30px -12px rgba(15,23,42,.3);display:flex;gap:12px;align-items:center}
 .install img{width:44px;height:44px;border-radius:10px;flex:none}
@@ -178,6 +235,7 @@ footer .wrap{padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
     <nav class="jump" aria-label="מעבר לקטגוריה">
       <a href="#reports">דיווחים</a>
       <a href="#knowledge">מרכז הידע</a>
+      <a href="#bank">מאגר פעילויות</a>
       <a href="#parents">הורים וחינוך חברתי</a>
       <a href="#boards">לוחות וזמנים</a>
       <a href="#staff">טפסים לצוות</a>
@@ -198,6 +256,20 @@ footer .wrap{padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
         <h3>דיווח אירוע חריג לפיקוח</h3>
         <p class="desc">טופס הדיווח על אירוע חריג לשנת תשפ"ז. ממלאים מיד אחרי האירוע, עם כל הפרטים, והדיווח מגיע לפיקוח.</p>
         <div class="meta"><span>טופס gov.il</span><span class="go">לדיווח <i class="fa-solid fa-arrow-left"></i></span></div>
+      </a>
+    </div>
+  </section>
+
+  <section id="bank">
+    <div class="sec-head"><h2>מאגר פעילויות</h2></div>
+    <div class="grid">
+      <a class="card c-rose wide" href="#activities" data-k="מאגר פעילויות תיקיות אירועים טקסים ימי זיכרון חגים רבין חנוכה פעילות לכיתה">
+        <div class="ico"><i class="fa-solid fa-folder-open"></i></div>
+        <div class="wide-body">
+          <h3>מאגר הפעילויות לאירועי השנה</h3>
+          <p class="desc">תיקייה לכל אירוע, מסודרות לפי תאריך: ימי זיכרון, חגים וטקסים. בכל תיקייה נמצאות הפעילויות לכיתות, עם דפים לצפייה ולהדפסה.</p>
+        </div>
+        <div class="meta"><span id="bankMeta">טוען…</span><span class="go">לתיקיות <i class="fa-solid fa-arrow-left"></i></span></div>
       </a>
     </div>
   </section>
@@ -365,6 +437,15 @@ footer .wrap{padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
   <button class="ok" id="installBtn" type="button">התקנה</button>
   <button class="x" id="installClose" type="button" aria-label="סגירה">✕</button>
 </div>
+<div class="aview" id="aview" hidden role="region" aria-label="מאגר פעילויות">
+  <div class="abar">
+    <div class="abar-in">
+      <button type="button" class="aback" id="aback" aria-label="חזרה"><i class="fa-solid fa-arrow-right"></i></button>
+      <div class="atitle"><small id="acrumb">פורטל הצוות</small><strong id="ahead">מאגר פעילויות</strong></div>
+    </div>
+  </div>
+  <div class="wrap abody" id="abody"></div>
+</div>
 <div class="offline" id="offline" hidden>אין חיבור לאינטרנט</div>
 <script>
 (function(){
@@ -387,6 +468,80 @@ footer .wrap{padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
   }
   function net(){off.hidden=navigator.onLine;}
   window.addEventListener('online',net);window.addEventListener('offline',net);net();
+})();
+</script>
+
+<script>
+(function(){
+  var view=document.getElementById('aview'),body=document.getElementById('abody'),head=document.getElementById('ahead'),crumb=document.getElementById('acrumb'),meta=document.getElementById('bankMeta');
+  var data=null;
+  function esc(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function dt(s){return new Date(s+'T12:00:00');}
+  function today(){var n=new Date();n.setHours(0,0,0,0);return n;}
+  function fmt(s){var d=dt(s);return d.getDate()+'.'+(d.getMonth()+1)+' · '+d.toLocaleDateString('he-IL',{weekday:'long'});}
+  function month(s){return dt(s).toLocaleDateString('he-IL',{month:'long',year:'numeric'});}
+  function plural(n){return n===0?'ריקה':n===1?'פעילות אחת':n+' פעילויות';}
+  function sorted(){return data.events.slice().sort(function(a,b){return a.date<b.date?-1:1;});}
+  function nextEvent(){var t=today();return sorted().filter(function(e){return dt(e.date)>=t;})[0];}
+
+  function renderList(){
+    head.textContent='מאגר פעילויות';crumb.textContent='פורטל הצוות';
+    var nx=nextEvent(),t=today(),h='<p class="alead">תיקייה לכל אירוע לפי סדר השנה. לחצו על תיקייה כדי לראות את הפעילויות שבה.</p>',m='';
+    sorted().forEach(function(e){
+      var mm=month(e.date);if(mm!==m){if(m)h+='</div>';h+='<div class="month">'+esc(mm)+'</div><div class="flist">';m=mm;}
+      var n=(e.activities||[]).length,past=dt(e.date)<t,isNext=nx&&nx.id===e.id;
+      h+='<a class="folder'+(n?'':' empty-f')+(past?' past':'')+(isNext?' next':'')+'" href="#activities/'+esc(e.id)+'" id="f-'+esc(e.id)+'">'+
+        '<span class="fico"><svg viewBox="0 0 48 40" width="46" height="40" aria-hidden="true"><path d="M3 6a3 3 0 0 1 3-3h12l5 5h19a3 3 0 0 1 3 3v24a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3Z" fill="currentColor"/><path d="M3 13h42v22a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3Z" fill="currentColor" opacity=".82"/></svg><span class="sym"><i class="fa-solid '+esc(e.icon||'fa-star')+'"></i></span></span>'+
+        '<span class="fbody"><b>'+esc(e.title)+'</b><span>'+esc(fmt(e.date))+(e.note?' · '+esc(e.note):'')+'</span></span>'+
+        '<span class="fside">'+(isNext?'<span class="chip-next">הבא בתור</span>':'')+'<span class="count'+(n?'':' zero')+'">'+plural(n)+'</span></span></a>';
+    });
+    if(m)h+='</div>';
+    body.innerHTML=h;
+    if(nx){var el=document.getElementById('f-'+nx.id);if(el)setTimeout(function(){el.scrollIntoView({block:'center'});},30);}
+  }
+
+  function renderEvent(id){
+    var e=data.events.filter(function(x){return x.id===id;})[0];
+    if(!e){location.hash='#activities';return;}
+    head.textContent=e.title;crumb.textContent='מאגר פעילויות';
+    var h='<div class="ehead"><div class="big"><i class="fa-solid '+esc(e.icon||'fa-star')+'"></i></div><div><h2>'+esc(e.title)+'</h2><p>'+esc(fmt(e.date))+(e.note?' · '+esc(e.note):'')+'</p></div></div>';
+    var acts=e.activities||[];
+    if(!acts.length){
+      h+='<div class="aempty"><div class="big2"><i class="fa-regular fa-folder-open"></i></div><b>עדיין אין פעילויות בתיקייה הזו</b>יש לכם פעילות לאירוע? שלחו אותה לרכז הפדגוגי והיא תעלה לכאן.</div>';
+    }
+    acts.forEach(function(a){
+      h+='<article class="act"><div class="act-top"><div><h3>'+esc(a.title)+'</h3>'+(a.subtitle?'<p class="sub">'+esc(a.subtitle)+'</p>':'')+'</div>'+(a.grades?'<span class="grades">שכבות '+esc(a.grades)+'</span>':'')+'</div>';
+      if(a.desc)h+='<p class="d">'+esc(a.desc)+'</p>';
+      if(a.parts&&a.parts.length){h+='<ul class="parts">';a.parts.forEach(function(p){h+='<li><b>'+esc(p[0])+'</b><span>'+esc(p[1])+'</span></li>';});h+='</ul>';}
+      if(a.files&&a.files.length){h+='<div class="files">';a.files.forEach(function(f){
+        var ic=f.type==='pdf'?'fa-file-pdf':f.type==='word'?'fa-file-word':f.type==='link'?'fa-arrow-up-right-from-square':'fa-file';
+        h+='<a class="fbtn '+esc(f.type)+'" href="'+esc(f.href)+'" target="_blank" rel="noopener"><i class="fa-solid '+ic+'"></i>'+esc(f.label)+'</a>';});h+='</div>';}
+      h+='</article>';
+    });
+    body.innerHTML=h;view.scrollTop=0;
+  }
+
+  function route(){
+    var h=location.hash;
+    if(h.indexOf('#activities')!==0){view.hidden=true;document.body.style.overflow='';return;}
+    view.hidden=false;document.body.style.overflow='hidden';
+    if(!data){body.innerHTML='<p class="alead">טוען…</p>';return;}
+    var id=h.split('/')[1];
+    if(id)renderEvent(decodeURIComponent(id));else{renderList();}
+  }
+  document.getElementById('aback').addEventListener('click',function(){
+    if(location.hash.indexOf('#activities/')===0)location.hash='#activities';
+    else{history.pushState('',document.title,location.pathname+location.search);route();var b=document.getElementById('bank');if(b)b.scrollIntoView();}
+  });
+  window.addEventListener('hashchange',route);
+  fetch('activities.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(j){
+    data=j;
+    var acts=0;data.events.forEach(function(e){acts+=(e.activities||[]).length;});
+    var nx=nextEvent();
+    meta.textContent=data.events.length+' תיקיות · '+(acts===1?'פעילות אחת':acts+' פעילויות')+(nx?' · הבא: '+nx.title:'');
+    route();
+  }).catch(function(){meta.textContent='המאגר זמין כשיש חיבור לאינטרנט';if(!view.hidden)body.innerHTML='<div class="aempty"><b>לא הצלחנו לטעון את המאגר</b>בדקו את החיבור לאינטרנט ונסו שוב.</div>';});
+  route();
 })();
 </script>
 </body>
