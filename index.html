@@ -209,6 +209,17 @@ footer .wrap{padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
 :root[data-theme="dark"] .grades{background:#0c4a6e;color:#e0f2fe}
 :root[data-theme="dark"] .parts li b{color:#7dd3fc}
 
+
+/* ===== Guides (video cards) ===== */
+.vcard .thumb{position:relative;aspect-ratio:16/9;max-width:100%;margin:-8px -8px 16px;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,#0c4a6e,#0369a1)}
+.vcard .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.vcard .play{position:absolute;inset:0;margin:auto;width:56px;height:40px;border-radius:12px;background:#dc2626;color:#fff;display:grid;place-items:center;font-size:1.05rem;box-shadow:0 6px 16px rgba(0,0,0,.35)}
+@media (max-width:600px){
+  .card.vcard{display:flex;flex-direction:column;align-items:stretch}
+  .vcard .thumb{margin:0 0 12px}
+  .card.vcard .meta{grid-column:auto}
+}
+
 /* install banner */
 .install{position:fixed;inset:auto 0 0 0;z-index:20;padding:14px max(16px,env(safe-area-inset-left,0px)) calc(14px + env(safe-area-inset-bottom,0px));background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -10px 30px -12px rgba(15,23,42,.3);display:flex;gap:12px;align-items:center}
 .install img{width:44px;height:44px;border-radius:10px;flex:none}
@@ -236,6 +247,7 @@ footer .wrap{padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
       <a href="#reports">דיווחים</a>
       <a href="#knowledge">מרכז הידע</a>
       <a href="#bank">מאגר פעילויות</a>
+      <a href="#guides">מדריכים</a>
       <a href="#parents">הורים וחינוך חברתי</a>
       <a href="#boards">לוחות וזמנים</a>
       <a href="#staff">טפסים לצוות</a>
@@ -284,6 +296,24 @@ footer .wrap{padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
           <p class="desc">התיקייה המרכזית של בית החינוך ב־Drive: נהלים, מסמכים, תוכניות וחומרים משותפים לכל הצוות. כשמחפשים מסמך ולא יודעים איפה הוא, מתחילים כאן.</p>
         </div>
         <div class="meta"><span>Google Drive · תיקייה</span><span class="go">למרכז הידע <i class="fa-solid fa-arrow-left"></i></span></div>
+      </a>
+    </div>
+  </section>
+
+  <section id="guides">
+    <div class="sec-head"><h2>מדריכים</h2></div>
+    <div class="grid">
+      <a class="card c-red vcard" href="https://www.youtube.com/watch?v=oJjCNVwHp9M" target="_blank" rel="noopener" data-k="מדריך סרטון הזנת ציונים הערכות תעודה ימי הורים ישיבות פדגוגיות סמארט סקול smart school">
+        <div class="thumb"><img src="https://i.ytimg.com/vi/oJjCNVwHp9M/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="play"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div>
+        <h3>איך מזינים ציונים והערכות</h3>
+        <p class="desc">הזנת הערכות למרכיבי ההערכה לתעודה, לימי הורים ולישיבות פדגוגיות: ממאגר משפטים, כטקסט חופשי או בסולם. כולל הזנה לכל הכיתה בבת אחת והעתקה בין מרכיבים.</p>
+        <div class="meta"><span>סרטון · Smart School</span><span class="go">לצפייה <i class="fa-solid fa-arrow-left"></i></span></div>
+      </a>
+      <a class="card c-red vcard" href="https://www.youtube.com/watch?v=KwLQmf2M_zg&amp;list=PLN0FECWN9dZnGcQv73j1sWNd7tPzBfvMd&amp;index=14" target="_blank" rel="noopener" data-k="מדריך סרטון נוכחות אירועים בשיעור דוח שיעור חיסורים איחורים סמארט סקול smart school">
+        <div class="thumb"><img src="https://i.ytimg.com/vi/KwLQmf2M_zg/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="play"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div>
+        <h3>איך בודקים נוכחות – אירועים בשיעור</h3>
+        <p class="desc">מילוי דוח שיעור: רישום נוכחות ואירועים לכל תלמיד, העתקה מדוח שיעור קודם ושימוש בכפתורים המיוחדים בטופס.</p>
+        <div class="meta"><span>סרטון · Smart School</span><span class="go">לצפייה <i class="fa-solid fa-arrow-left"></i></span></div>
       </a>
     </div>
   </section>

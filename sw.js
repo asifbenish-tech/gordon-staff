@@ -1,5 +1,5 @@
 // גרסה: לשנות את המספר בכל עדכון של index.html כדי שהמורים יקבלו את הגרסה החדשה
-const CACHE = 'gordon-staff-v3';
+const CACHE = 'gordon-staff-v4';
 const CORE = ['./', './index.html', './activities.json', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png', './favicon.png'];
 
 self.addEventListener('install', e => {
