@@ -1,5 +1,5 @@
 // גרסה: לשנות את המספר בכל עדכון של index.html כדי שהמורים יקבלו את הגרסה החדשה
-const CACHE = 'gordon-staff-v4';
+const CACHE = 'gordon-staff-v5';
 const CORE = ['./', './index.html', './activities.json', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png', './favicon.png'];
 
 self.addEventListener('install', e => {
@@ -12,10 +12,10 @@ self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
-  // העמוד עצמו: קודם מהרשת (כדי לקבל עדכונים), ואם אין אינטרנט – מהמטמון
+  // העמוד עצמו: קודם מהרשת (כדי לקבל עדכונים), ואם אין אינטרנט – מהמטמון. כל עמוד נשמר בשם שלו (פורטל, קלפי)
   if (req.mode === 'navigate' || (url.origin === location.origin && /\.(html|json)$/.test(url.pathname))) {
-    e.respondWith(fetch(req).then(r => { const copy = r.clone(); caches.open(CACHE).then(c => c.put(req.mode === 'navigate' ? './index.html' : req, copy)); return r; })
-      .catch(() => caches.match(req.mode === 'navigate' ? './index.html' : req, {ignoreSearch: true})));
+    e.respondWith(fetch(req).then(r => { const copy = r.clone(); caches.open(CACHE).then(c => c.put(req, copy)); return r; })
+      .catch(() => caches.match(req, {ignoreSearch: true}).then(hit => hit || (req.mode === 'navigate' ? caches.match('./index.html') : undefined))));
     return;
   }
   // גופנים, אייקונים וקבצים קבועים: מהמטמון, ובמקביל מתעדכנים ברקע
