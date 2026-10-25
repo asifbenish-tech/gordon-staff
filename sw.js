@@ -1,6 +1,6 @@
 // גרסה: לשנות את המספר בכל עדכון של index.html כדי שהמורים יקבלו את הגרסה החדשה
-const CACHE = 'gordon-staff-v4';
-const CORE = ['./', './index.html', './activities.json', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png', './favicon.png'];
+const CACHE = 'gordon-staff-v5';
+const CORE = ['./', './index.html', './me.js', './activities.json', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png', './favicon.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
@@ -19,7 +19,7 @@ self.addEventListener('fetch', e => {
     return;
   }
   // גופנים, אייקונים וקבצים קבועים: מהמטמון, ובמקביל מתעדכנים ברקע
-  const cacheable = url.origin === location.origin || /fonts\.(googleapis|gstatic)\.com|cdnjs\.cloudflare\.com/.test(url.host);
+  const cacheable = url.origin === location.origin || /fonts\.(googleapis|gstatic)\.com|www\.gstatic\.com|cdnjs\.cloudflare\.com/.test(url.host);
   if (!cacheable) return;
   e.respondWith(caches.match(req).then(hit => {
     const net = fetch(req).then(r => { if (r && (r.ok || r.type === 'opaque')) { const copy = r.clone(); caches.open(CACHE).then(c => c.put(req, copy)); } return r; }).catch(() => hit);

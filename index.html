@@ -230,6 +230,54 @@ footer .wrap{padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
 .install .x{background:transparent;color:var(--muted);padding:9px 8px;font-size:1.1rem}
 .ios-share{display:inline-block;vertical-align:-3px;width:16px;height:16px}
 .offline{position:fixed;top:calc(8px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:30;background:#1e293b;color:#fff;font-size:.82rem;padding:6px 14px;border-radius:999px}
+
+/* ===== Personal area (me.js) ===== */
+.mine .card{animation:none}
+.mcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;gap:12px}
+.mform{max-width:440px;width:100%;margin:12px auto 0;padding:24px 20px;text-align:center}
+.mform h2{margin:0;font-size:1.3rem;color:var(--ink)}
+.mform p{margin:0;color:var(--muted);font-size:.92rem}
+.mico{width:56px;height:56px;margin:0 auto;border-radius:16px;display:grid;place-items:center;font-size:1.4rem;color:var(--brand-700);background:color-mix(in srgb,var(--brand-500) 14%,transparent)}
+.mfield{display:grid;gap:6px;text-align:right}
+.mfield label{font-size:.85rem;font-weight:700;color:var(--ink)}
+.mfield input{font:inherit;font-size:1.25rem;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);direction:ltr;text-align:center;letter-spacing:.14em;width:100%}
+.mfield input:focus{outline:3px solid var(--brand-500);outline-offset:1px}
+.mbtn{font:inherit;font-weight:700;font-size:1rem;border:0;border-radius:12px;padding:13px 16px;background:var(--brand-700);color:#fff;cursor:pointer;width:100%}
+.mbtn[disabled]{opacity:.6;cursor:default}
+.mbtn:focus-visible{outline:3px solid var(--brand-500);outline-offset:2px}
+.mlink{font:inherit;font-size:.88rem;border:0;background:none;color:var(--brand-700);padding:6px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.mrow{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.merr,.mok{font-size:.88rem;border-radius:10px;padding:8px 12px;text-align:right}
+.merr{color:#b91c1c;background:color-mix(in srgb,#dc2626 10%,transparent)}
+.mok{color:#047857;background:color-mix(in srgb,#059669 10%,transparent)}
+.mhint{margin:0;font-size:.8rem;color:var(--muted)}
+.mhint a{color:var(--brand-700)}
+.mwho{display:flex;align-items:center;gap:14px}
+.mav{flex:none;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;font-size:1.3rem;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--brand-500),var(--brand-900))}
+.mwho div{min-width:0}
+.mwho b{display:block;color:var(--ink);font-size:1.08rem;line-height:1.3}
+.mwho div span{font-size:.85rem;color:var(--muted)}
+.mwho .mlink{margin-inline-start:auto;flex:none}
+.mpick{display:grid;gap:6px;font-size:.85rem;font-weight:700;color:var(--ink)}
+.mpick select{font:inherit;font-weight:400;font-size:1rem;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink)}
+.mdays{display:flex;gap:6px}
+.mdays button{position:relative;flex:1;min-width:0;font:inherit;font-size:.86rem;font-weight:500;padding:9px 2px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--text);cursor:pointer}
+.mdays button[aria-pressed="true"]{background:var(--brand-700);border-color:var(--brand-700);color:#fff;font-weight:700}
+.mdays button.today::after{content:"";position:absolute;top:4px;left:50%;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:#059669}
+.mdays button:focus-visible{outline:3px solid var(--brand-500);outline-offset:2px}
+.mslots{display:grid;gap:8px}
+.mslot{display:flex;gap:12px;align-items:center;padding:10px 12px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.mhour{flex:none;width:38px;text-align:center;line-height:1.1}
+.mhour small{display:block;font-size:.66rem;color:var(--muted)}
+.mhour b{font-size:1.25rem;color:var(--ink)}
+.mwhat{flex:1;min-width:0;display:grid;gap:4px}
+.mwhat b{color:var(--ink);font-size:.95rem;font-weight:700}
+.mtag{--t:#475569;display:inline-block;font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:999px;color:var(--t);background:color-mix(in srgb,var(--t) 12%,transparent);white-space:nowrap}
+.mslot.free{background:transparent;border-style:dashed}
+.mslot.free .mwhat b{color:var(--muted);font-weight:500}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .mtag{color:color-mix(in srgb,var(--t) 55%,#fff)}:root:not([data-theme="light"]) .mlink,:root:not([data-theme="light"]) .mhint a,:root:not([data-theme="light"]) .mico{color:#7dd3fc}}
+:root[data-theme="dark"] .mtag{color:color-mix(in srgb,var(--t) 55%,#fff)}
+:root[data-theme="dark"] .mlink,:root[data-theme="dark"] .mhint a,:root[data-theme="dark"] .mico{color:#7dd3fc}
 </style>
 </head>
 <body>
@@ -244,6 +292,7 @@ footer .wrap{padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
       <input id="q" type="search" placeholder="חיפוש מהיר (למשל: תורנויות, חדר אוכל)…" autocomplete="off" aria-label="חיפוש מהיר">
     </div>
     <nav class="jump" aria-label="מעבר לקטגוריה">
+      <a href="#me" data-me hidden>האזור שלי</a>
       <a href="#reports">דיווחים</a>
       <a href="#knowledge">מרכז הידע</a>
       <a href="#bank">מאגר פעילויות</a>
@@ -259,6 +308,14 @@ footer .wrap{padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
 
 <main>
 <div class="wrap">
+
+  <div class="mine" id="mine" data-me hidden>
+    <a class="card c-sky wide" href="#me">
+      <div class="ico"><i class="fa-solid fa-user"></i></div>
+      <div class="wide-body"><h3 id="mineTitle">כניסה אישית</h3><p class="desc" id="mineDesc"></p></div>
+      <div class="meta"><span id="mineMeta"></span><span class="go" id="mineGo">לכניסה <i class="fa-solid fa-arrow-left"></i></span></div>
+    </a>
+  </div>
 
   <section id="reports">
     <div class="sec-head"><h2>דיווחים</h2></div>
@@ -476,6 +533,15 @@ footer .wrap{padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
   </div>
   <div class="wrap abody" id="abody"></div>
 </div>
+<div class="aview" id="mview" hidden role="region" aria-label="האזור האישי">
+  <div class="abar">
+    <div class="abar-in">
+      <button type="button" class="aback" id="mback" aria-label="חזרה"><i class="fa-solid fa-arrow-right"></i></button>
+      <div class="atitle"><small>פורטל הצוות</small><strong id="mhead">האזור האישי</strong></div>
+    </div>
+  </div>
+  <div class="wrap abody" id="mbody"></div>
+</div>
 <div class="offline" id="offline" hidden>אין חיבור לאינטרנט</div>
 <script>
 (function(){
@@ -574,5 +640,6 @@ footer .wrap{padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
   route();
 })();
 </script>
+<script type="module" src="me.js"></script>
 </body>
 </html>
