@@ -15,6 +15,9 @@ var API_KEY = "AIzaSyAXThb9nGkGSKH8ulaznf0ABgzJmlRxYEo";   // מזהה ציבו�
 var ACCESS_URL = "https://raw.githubusercontent.com/asifbenish-tech/gordon-timetable/master/access_map.json";
 var USERS_API = "https://script.google.com/macros/s/AKfycbwJyZr8roh7yF0P32iXu2MgMoz95K62urGr_BAVOeAsWhMjqP-J3JQP87XKZanTpxNI/exec";
 var APP_NAME = "צוות גורדון";
+// אסיף - גיבוב בלבד (אותו גיבוב כמו OWNER_HASH ב-users_admin, ציבורי ממילא). ב-setup מקבל
+// את המייל של החשבון שמריץ את הסקריפט, אם עוד אין לו מייל בגיליון - כדי שאפשר לבדוק מיד.
+var OWNER_HASH = "41f9510f74c6f9b8cbce9d8e4e8935e07529928654e13e3261cd25397b4c2794";
 var CODE_MIN = 10;     // תוקף קוד, בדקות
 var MAX_TRIES = 5;     // ניסיונות לכל קוד
 var MAX_SENDS = 3;     // קודים לאותו אדם ב-10 דקות
@@ -37,12 +40,13 @@ function setup() {
     p.setProperty("SHEET_ID", ss.getId());
   }
   CacheService.getScriptCache().remove("access");
-  var added = syncNames_(), test = selfTest_();
+  var added = syncNames_(), mine = fillOwner_(), test = selfTest_();
   var url = SpreadsheetApp.openById(p.getProperty("SHEET_ID")).getUrl();
   var missing = emails_().filter(function (x) { return !x.email; }).length;
   MailApp.sendEmail(owner_(), APP_NAME + " - שרת הכניסה",
     "גיליון המיילים: " + url + "\n" +
     (added ? "נוספו לגיליון " + added + " שמות חדשים.\n" : "") +
+    (mine ? "קוד הכניסה של " + mine + " יישלח ל-" + owner_() + " (אפשר לשנות בגיליון).\n" : "") +
     (missing ? "חסר מייל ל-" + missing + " אנשי צוות - הם לא יוכלו להיכנס עד שימולא.\n" : "לכל אנשי הצוות יש מייל.\n") +
     "\nבדיקת החיבור ל-Firebase: " + test + "\n");
   Logger.log("sheet: " + url + " | added: " + added + " | missing emails: " + missing + " | firebase: " + test);
@@ -145,6 +149,19 @@ function syncNames_() {
     sh.getRange(sh.getLastRow() + 1, 1, names.length, 3).setValues(names.map(function (n) { return [n, "", ""]; }));
   }
   return names.length;
+}
+
+function fillOwner_() {
+  var o = access_()[OWNER_HASH];
+  if (!o) return "";
+  var sh = sheet_("מיילים"), v = sh.getDataRange().getValues();
+  for (var i = 1; i < v.length; i++) {
+    if (String(v[i][0] || "").trim() !== o.n) continue;
+    if (String(v[i][1] || "").trim()) return "";
+    sh.getRange(i + 1, 2, 1, 1).setValues([[owner_()]]);
+    return o.n;
+  }
+  return "";
 }
 
 function emails_() {

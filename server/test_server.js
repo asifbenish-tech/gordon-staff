@@ -20,7 +20,7 @@ function makeEnv() {
     appendRow(r) { this.rows.push(r); },
     setFrozenRows() {},
     getLastRow() { return this.rows.length; },
-    getRange(r, c, n) { const rows = this.rows; return {setValues(v) { for (let i = 0; i < n; i++) rows[r - 1 + i] = v[i]; }}; },
+    getRange(r, c) { const rows = this.rows; return {setValues(v) { v.forEach((row, i) => { rows[r - 1 + i] = rows[r - 1 + i] || []; row.forEach((x, j) => { rows[r - 1 + i][c - 1 + j] = x; }); }); }}; },
     getDataRange() { const rows = this.rows; return {getValues: () => rows.map(x => x.slice())}; },
     setName(n) { sheets[n] = this.rows; return sheet(n); },
   });
@@ -63,7 +63,7 @@ function makeEnv() {
     },
   };
   vm.createContext(env);
-  vm.runInContext(fs.readFileSync(path.join(__dirname, "Code.gs"), "utf8"), env);
+  vm.runInContext(fs.readFileSync(path.join(__dirname, "Code.gs"), "utf8") + "\nOWNER_HASH = " + JSON.stringify(OWNER_H) + ";", env);
   const post = body => JSON.parse(env.doPost({postData: {contents: JSON.stringify(body)}}).text);
   return {env, post, mails, sheets, props, tick: ms => { now += ms; }};
 }
@@ -74,13 +74,19 @@ assert.strictEqual(T.mails.length, 1, "setup sends one report mail");
 assert.match(T.mails[0].body, /Firebase: עובדת ✓/, "self test signs a valid token");
 const names = T.sheets["מיילים"].slice(1).map(r => r[0]);
 assert.deepStrictEqual(names.sort(), ["אנה", "אסיף", "לייה"].sort(), "names from access map + live users, removed excluded");
+const ownerRow = () => T.sheets["מיילים"].find(r => r[0] === "אסיף");
+assert.strictEqual(ownerRow()[1], "adgordon248@gmail.com", "owner gets the script account's email");
+assert.match(T.mails[0].body, /קוד הכניסה של אסיף יישלח ל-adgordon248@gmail.com/);
+ownerRow()[1] = "asif@example.com";
 T.env.setup();
 assert.strictEqual(T.sheets["מיילים"].length, 4, "second setup adds no duplicates");
+assert.strictEqual(ownerRow()[1], "asif@example.com", "setup never overwrites an email that was filled in");
 
 // אין מייל -> הודעה ברורה
 let r = T.post({a: "code", h: OTHER_H});
 assert.strictEqual(r.ok, false); assert.match(r.error, /לא רשום מייל/);
 T.sheets["מיילים"].forEach(row => { if (row[0] === "אנה") row[1] = "anna@example.com"; if (row[0] === "לייה") row[1] = "leia@example.com"; });
+assert.strictEqual(T.sheets["מיילים"].find(r => r[0] === "אנה").length, 3, "rows keep their 3 columns");
 
 // לא ברשימה / הוסר בעמוד המשתמשים
 assert.match(T.post({a: "code", h: "e".repeat(64)}).error, /לא מופיעה/);
