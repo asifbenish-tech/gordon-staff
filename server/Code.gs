@@ -20,6 +20,8 @@ var MAX_TRIES = 5;     // ניסיונות לכל קוד
 var MAX_SENDS = 3;     // קודים לאותו אדם ב-10 דקות
 var MAX_HOUR = 40;     // קודים לכל בית הספר בשעה (מכסת המייל של חשבון Gmail: 100 ביום)
 var AUD = "https://identitytoolkit.googleapis.com/google.identity.identitytoolkit.v1.IdentityToolkit";
+// מפתח השירות: במאפיין הסקריפט SA_KEY, או מודבק כאן בעותק שבחשבון בלבד. בגיט זה תמיד נשאר ריק.
+var SA_KEY_INLINE = null;
 
 // להרצה ידנית: בפעם הראשונה יוצר את הגיליון, ובכל פעם מוסיף לגיליון שמות חדשים
 // ובודק שמפתח השירות עובד מול Firebase. התוצאה מגיעה במייל.
@@ -169,7 +171,7 @@ function customToken_(uid, claims) {
 }
 
 function saKey_() {
-  var raw = PropertiesService.getScriptProperties().getProperty("SA_KEY"), sa;
+  var raw = PropertiesService.getScriptProperties().getProperty("SA_KEY") || (SA_KEY_INLINE && JSON.stringify(SA_KEY_INLINE)), sa;
   if (!raw) throw new Error("חסר מפתח השירות (SA_KEY) - ראו server/README.txt");
   try { sa = JSON.parse(raw); } catch (err) { throw new Error("SA_KEY אינו JSON תקין - להדביק את כל תוכן הקובץ שהורד"); }
   if (!sa.client_email || !sa.private_key) throw new Error("SA_KEY חסר client_email או private_key");

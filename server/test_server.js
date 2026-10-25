@@ -146,4 +146,11 @@ U.post({a: "code", h: OTHER_H});
 const c2 = U.mails[U.mails.length - 1].subject.match(/\d{6}/)[0];
 assert.match(U.post({a: "verify", h: OTHER_H, c: c2}).error, /שייך לפרויקט school-gordon/);
 
+// מפתח מודבק בקוד (בלי מאפיין) עובד כמו מאפיין
+const V = makeEnv();
+delete V.props.SA_KEY;
+vm.runInContext("SA_KEY_INLINE = " + JSON.stringify(SA) + ";", V.env);
+V.env.setup();
+assert.match(V.mails[0].body, /Firebase: עובדת ✓/, "inline key works");
+
 console.log("server/Code.gs: all checks passed");
