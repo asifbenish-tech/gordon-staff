@@ -278,6 +278,61 @@ footer .wrap{padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .mtag{color:color-mix(in srgb,var(--t) 55%,#fff)}:root:not([data-theme="light"]) .mlink,:root:not([data-theme="light"]) .mhint a,:root:not([data-theme="light"]) .mico{color:#7dd3fc}}
 :root[data-theme="dark"] .mtag{color:color-mix(in srgb,var(--t) 55%,#fff)}
 :root[data-theme="dark"] .mlink,:root[data-theme="dark"] .mhint a,:root[data-theme="dark"] .mico{color:#7dd3fc}
+
+/* tabs + duties, messages, events */
+#mview .abody{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+.mtabs{position:fixed;inset-inline:0;bottom:0;z-index:16;display:flex;justify-content:center;background:var(--surface);border-top:1px solid var(--line);padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
+.mtabs[hidden]{display:none}
+/* הודעת ההתקנה לא מכסה את הלשוניות */
+body:has(#mview:not([hidden]) .mtabs:not([hidden])) .install{bottom:calc(64px + env(safe-area-inset-bottom,0px));padding-bottom:14px}
+body:has(#mview:not([hidden]) .mtabs:not([hidden])):has(.install:not([hidden])) #mview .abody{padding-bottom:calc(190px + env(safe-area-inset-bottom,0px))}
+.mtabs a{position:relative;flex:1;max-width:150px;min-width:0;display:grid;justify-items:center;gap:3px;padding:7px 2px;border-radius:12px;color:var(--muted);text-decoration:none;font-size:.72rem;font-weight:500}
+.mtabs a svg,.mtabs a i{font-size:1.15rem}
+.mtabs a[aria-current="page"]{color:var(--brand-700);font-weight:700;background:color-mix(in srgb,var(--brand-500) 12%,transparent)}
+.mtabs a:focus-visible{outline:3px solid var(--brand-500);outline-offset:-2px}
+.mtabs em{position:absolute;top:2px;inset-inline-start:calc(50% + 6px);min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#dc2626;color:#fff;font-style:normal;font-size:.68rem;font-weight:700;line-height:18px;text-align:center}
+.msec{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:6px}
+.msec h3,.mmonth{margin:0;font-size:1.02rem;font-weight:700;color:var(--ink)}
+.msec a{font-size:.84rem;color:var(--brand-700);white-space:nowrap}
+.mmonth{margin-top:6px}
+.mlist{display:grid;gap:8px}
+.mduty,.mev{display:flex;gap:12px;align-items:center;padding:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;color:inherit;text-decoration:none}
+.mduty>div:nth-child(2),.mev>div:nth-child(2){flex:1;min-width:0;display:grid;gap:1px}
+.mduty b,.mev b{color:var(--ink);font-size:.97rem;line-height:1.35}
+.mduty span,.mev span,.mduty small{font-size:.84rem;color:var(--muted)}
+.mdico{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;color:#b45309;background:color-mix(in srgb,#d97706 14%,transparent)}
+.mduty.mine{border-color:color-mix(in srgb,#d97706 45%,var(--line))}
+.mduty.next{border:0;color:#fff;background:linear-gradient(135deg,#d97706,#b45309);box-shadow:0 10px 22px -12px rgba(180,83,9,.8)}
+.mduty.next b,.mduty.next span,.mduty.next small{color:#fff}
+.mduty.next .mdico{color:#fff;background:rgba(255,255,255,.2)}
+.mdate{flex:none;width:48px;text-align:center;line-height:1.1;padding:6px 0;border-radius:12px;color:var(--brand-700);background:color-mix(in srgb,var(--brand-500) 12%,transparent)}
+.mdate b{display:block;font-size:1.25rem;color:inherit}
+.mdate small{font-size:.66rem}
+.mmsg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;gap:6px}
+.mmsg.new{border-inline-start:4px solid var(--brand-500)}
+.mmh{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.mmsg b{color:var(--ink);font-size:1rem;line-height:1.4}
+.mmsg p{margin:0;white-space:pre-line;overflow-wrap:anywhere;font-size:.94rem}
+.mmsg small{font-size:.78rem;color:var(--muted)}
+.mdel{flex:none;width:36px;height:36px;border-radius:10px;border:0;background:transparent;color:var(--muted);cursor:pointer}
+.mdel:hover,.mdel:focus-visible{color:#dc2626;background:color-mix(in srgb,#dc2626 10%,transparent);outline:none}
+.madd{background:var(--surface);border:1px dashed color-mix(in srgb,var(--brand-500) 50%,var(--line));border-radius:14px}
+.madd summary{cursor:pointer;padding:13px 16px;font-weight:700;color:var(--brand-700);list-style:none}
+.madd summary::-webkit-details-marker{display:none}
+.madd form{display:grid;gap:12px;padding:4px 16px 16px}
+.mf2 span{font-size:.85rem;font-weight:700;color:var(--ink)}
+.mfield.mf2 input,.mf2 textarea{font:inherit;font-size:1rem;letter-spacing:0;direction:rtl;text-align:right;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);width:100%;min-width:0}
+.mf2 textarea{resize:vertical}
+.mf2 textarea:focus{outline:3px solid var(--brand-500);outline-offset:1px}
+.mtwo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mbtn.ghost{background:transparent;color:var(--brand-700);border:1px solid color-mix(in srgb,var(--brand-500) 50%,var(--line))}
+.mform .mbtn+.mbtn{margin-top:-2px}
+.mdemo{font-size:.86rem;border-radius:12px;padding:9px 12px;color:var(--note-ink);background:var(--note-bg)}
+.mdemo .mlink{color:inherit;padding:0 4px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) :is(.mtabs a[aria-current="page"],.msec a,.madd summary,.mbtn.ghost,.mdate){color:#7dd3fc}:root:not([data-theme="light"]) .mdico{color:#fbbf24}}
+:root[data-theme="dark"] :is(.mtabs a[aria-current="page"],.msec a,.madd summary,.mbtn.ghost,.mdate){color:#7dd3fc}
+:root[data-theme="dark"] .mdico{color:#fbbf24}
+.mduty.next .mdico{color:#fff!important}
 </style>
 </head>
 <body>
@@ -541,6 +596,7 @@ footer .wrap{padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
     </div>
   </div>
   <div class="wrap abody" id="mbody"></div>
+  <nav class="mtabs" id="mtabs" hidden aria-label="האזור האישי"></nav>
 </div>
 <div class="offline" id="offline" hidden>אין חיבור לאינטרנט</div>
 <script>

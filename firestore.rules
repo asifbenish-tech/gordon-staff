@@ -1,0 +1,15 @@
+// כללי הגישה ל-Firestore של פרויקט gordon-staff.
+// מדביקים ב: Firebase console -> Firestore Database -> Rules -> Publish.
+// נכנסים רק דרך שרת הכניסה (server/Code.gs), שחותם לכל איש צוות על שם (n) ותפקיד (r).
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function staff() { return request.auth != null && request.auth.token.n is string; }
+    function admin() { return staff() && request.auth.token.r == 'admin'; }
+
+    // שמירות, הודעות ולוח אירועים: כל הצוות קורא, רק ההנהלה כותבת.
+    match /duties/{id}   { allow read: if staff(); allow write: if admin(); }
+    match /messages/{id} { allow read: if staff(); allow write: if admin(); }
+    match /events/{id}   { allow read: if staff(); allow write: if admin(); }
+  }
+}
